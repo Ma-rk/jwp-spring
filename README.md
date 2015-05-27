@@ -13,4 +13,6 @@
 
 
 ### 9. UserService와 QnaService 중 multi thread에서 문제가 발생할 가능성이 있는 소스는 무엇이며, 그 이유는 무엇인가?
-* 
+- UserService에 문제의 가능성이 있다.
+- 기본적으로 싱글톤으로 작동하기 때문이다.
+- @Scope("prototype") 어노테이션을 붙여줘서 해결할 수 있다.
