@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value={"", "/questions"})
+@RequestMapping(value = { "", "/questions" })
 public class QuestionController {
 	private static final Logger logger = LoggerFactory.getLogger(QuestionController.class);
-	
+
 	@Resource(name = "qnaService")
 	private QnaService qnaService;
 
@@ -31,20 +31,20 @@ public class QuestionController {
 		model.addAttribute("questions", qnaService.findAll());
 		return "qna/list";
 	}
-	
+
 	@RequestMapping("/{id}")
 	public String show(@PathVariable long id, Model model) {
 		model.addAttribute("question", qnaService.findById(id));
 		return "qna/show";
 	}
-	
+
 	@RequestMapping("/form")
 	public String form(Model model) {
 		model.addAttribute("question", new Question());
 		return "qna/form";
 	}
-	
-	@RequestMapping(value="", method=RequestMethod.POST)
+
+	@RequestMapping(value = "", method = RequestMethod.POST)
 	public String save(@Valid Question question, BindingResult bindingResult) {
 		logger.debug("Question : {}", question);
 		if (bindingResult.hasFieldErrors()) {
@@ -56,5 +56,12 @@ public class QuestionController {
 		}
 		qnaService.save(question);
 		return "redirect:/";
+	}
+
+	@RequestMapping(value = "/{questionId}/form", method = RequestMethod.GET)
+	public String update(@PathVariable long questionId, Model model) {
+		model.addAttribute("mode", "수정하기");
+		model.addAttribute("question", qnaService.findById(questionId));
+		return "qna/form";
 	}
 }

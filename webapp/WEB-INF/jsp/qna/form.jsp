@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%><%@ include file="/include/tags.jspf"
-%><!DOCTYPE html>
+%>
+<!DOCTYPE html>
 <html>
 <head>
 <%@ include file="/include/header.jspf"%>
@@ -32,7 +33,7 @@
 						<form:errors path="contents" cssClass="error" /></td>
 				</tr>
 			</table>
-			<input type="submit" value="질문하기" />			
+			<input type="submit" value="저장" />			
 		</form:form>
 	</div>
 </body>
