@@ -5,8 +5,11 @@
 - 자식 컨텍스트 생성
 
 
-### 3. 서버 시작 후 http://localhost:8080으로 접근해서 질문 목록이 보이기까지 흐름에 대해 최대한 구체적으로 설명하라. 
-* 
+### 3. 서버 시작 후 http://localhost:8080으로 접근해서 질문 목록이 보이기까지 흐름에 대해 최대한 구체적으로 설명하라. - 리퀘스트 발생
+- DispatchServlet을 통해 알맞은 controller 호출
+- 내부 로직 수행(service, dao등)
+- viewResolver를 통해 알맞은 model과 view를 전달
+- 브라우저에서 화면 랜더링
 
 
 ### 9. UserService와 QnaService 중 multi thread에서 문제가 발생할 가능성이 있는 소스는 무엇이며, 그 이유는 무엇인가?
